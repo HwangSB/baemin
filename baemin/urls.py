@@ -18,6 +18,11 @@ from django.urls import path
 from main import views
 
 urlpatterns = [
+    #여기는 html파일들 추가 해주세요.
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
+    #여기 밑에는 CRUD 경로 입니다.
+    path('creat/',views.creat,name='creat'),
+    path('update/<int:item_id>',views.update,name='update'),
+    path('creat/<int:item_id>',views.update,name='delete'),ㄴ
 ]
