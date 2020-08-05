@@ -22,7 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     #여기 밑에는 CRUD 경로 입니다.
-    path('creat/',views.creat,name='creat'),
+    path('create/',views.creat,name='create'),
     path('update/<int:item_id>',views.update,name='update'),
     path('delete/<int:item_id>',views.delete,name='delete'),
 ]
