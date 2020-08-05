@@ -33,10 +33,7 @@
         {% endfor%}
         <li class="list-group-item d-flex justify-content-between">
           <span>총 금액</span>
-          {% totalprice = 0 %}                                  # 총 금액 계산 파이썬 반복문
-          {% for menu in Item %}
-          {% totalprice += price %}
-          {% endfor %}
+          
           <strong>
           {{totalprice}}
           </strong>                                              # 총 금액 변수 명 입력
