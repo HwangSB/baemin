@@ -5,7 +5,7 @@ from .models import Item
 def home(request):
     return render(request, 'home.html')
 
-def creat(request): #Creat - 객체 생성 부분
+def create(request): #Create - 객체 생성 부분
     if request.method == 'POST':
         item = Item()
         item.name = request.POST['name']
@@ -17,7 +17,7 @@ def creat(request): #Creat - 객체 생성 부분
         item.save()
         return redirect('home')
 
-def upadte(request): #Update - 객체 수정
+def update(request, item_id): #Update - 객체 수정
     item = get_object_or_404(Item, pk = item_id)
     if request.method == 'POST':
         item = Item()
