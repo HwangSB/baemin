@@ -3,9 +3,14 @@ from .models import Item
 
 # Create your views here.
 def home(request):
+    item = Item.objects.all()
     return render(request, 'home.html')
 
-def create(request): #Create - 객체 생성 부분
+def update(request,post_id):
+    update = get_object_or_404(Item,pk = post_id)
+    return render(request,'update.html',{update:'update'})
+
+def create(request): #Create - 객체 생성 
     if request.method == 'POST':
         item = Item()
         item.name = request.POST['name']
