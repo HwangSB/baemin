@@ -17,7 +17,7 @@ def create(request): #Create - 객체 생성 부분
         item.save()
         return redirect('home')
 
-def upadte(request): #Update - 객체 수정
+def update(request, item_id): #Update - 객체 수정
     item = get_object_or_404(Item, pk = item_id)
     if request.method == 'POST':
         item = Item()
