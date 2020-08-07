@@ -23,6 +23,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('update.html/<int:item_id>',views.update,name='update1'),
     path('menu.html',views.menu,name='menu'),
+    path('product.html',views.product,name='product'),
 
 
     #여기 밑에는 CRUD 경로 입니다.

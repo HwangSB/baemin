@@ -8,6 +8,9 @@ def home(request):
 def menu(request): #menu.html
     return render(request,'menu.html')
 
+def product(request): #product.html
+    return render(request,'product.html')
+
 def update(request,item_id): #update.html
     update = get_object_or_404(Item,pk = item_id)
     return render(request,'update.html',{'update':update})
