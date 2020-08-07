@@ -6,10 +6,11 @@ def home(request):
     item = Item.objects.all()
     return render(request, 'home.html')
 
-def update(request,post_id):
+def update(request,post_id): #update.html
     update = get_object_or_404(Item,pk = post_id)
     return render(request,'update.html',{update:'update'})
 
+#---------------------------------------------------------------------
 def create(request): #Create - 객체 생성 
     if request.method == 'POST':
         item = Item()
