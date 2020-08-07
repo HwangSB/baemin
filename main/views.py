@@ -3,12 +3,14 @@ from .models import Item
 
 # Create your views here.
 def home(request):
-    item = Item.objects.all()
     return render(request, 'home.html')
 
-def update(request,post_id): #update.html
-    update = get_object_or_404(Item,pk = post_id)
-    return render(request,'update.html',{update:'update'})
+def menu(request): #menu.html
+    return render(request,'menu.html')
+
+def update(request,item_id): #update.html
+    update = get_object_or_404(Item,pk = item_id)
+    return render(request,'update.html',{'update':update})
 
 #---------------------------------------------------------------------
 def create(request): #Create - 객체 생성 

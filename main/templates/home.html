@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}집에 보내조 - 주문 페이지{% endblock %}
+{% block title %}집에 보내조 - 홈화면{% endblock %}
 
 {% block content %}
 <main role="main">
@@ -23,7 +23,7 @@
               <p class="card-text">상세 정보</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">메뉴보기</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'menu'%}">메뉴보기</a></button>
                 </div>
               </div>
             </div>

@@ -21,7 +21,8 @@ urlpatterns = [
     #여기는 html파일들 추가 해주세요.
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('update.html/<int:item_id>',views.update,name='update'),
+    path('update.html/<int:item_id>',views.update,name='update1'),
+    path('menu.html',views.menu,name='menu'),
 
 
     #여기 밑에는 CRUD 경로 입니다.
