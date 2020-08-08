@@ -3,13 +3,18 @@ from .models import Item
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    items = Item.objects.all()
+    return render(request, 'home.html',{'items':items})
 
-def menu(request): #menu.html
-    return render(request,'menu.html')
+def menu(request, item_id): #menu.html
+    menus = Item.objects.all()
+    menu = get_object_or_404(Item, pk=item_id)
+    return render(request,'menu.html',{'menus':menus,'menu':menu})
+    #return render(request,'menu.html',{'menu':menu})
 
-def product(request): #product.html
-    return render(request,'product.html')
+def product(request, item_id): #product.html
+    product = get_object_or_404(Item, pk=item_id)
+    return render(request,'product.html', {'product':product})
 
 def payment(request): #product.html
     return render(request,'payment.html')
@@ -22,7 +27,7 @@ def update(request,item_id): #update.html
 def create(request): #Create - 객체 생성 
     if request.method == 'POST':
         item = Item()
-        item.name = request.POST['name']
+        item.usertype = request.POST['usertype']
         item.store = request.POST['store']
         item.menu = request.POST['menu']
         item.option = request.POST['option']
@@ -35,7 +40,7 @@ def update(request, item_id): #Update - 객체 수정
     item = get_object_or_404(Item, pk = item_id)
     if request.method == 'POST':
         item = Item()
-        item.name = request.POST['name']
+        item.usertype = request.POST['usertype']
         item.store = request.POST['store']
         item.menu = request.POST['menu']
         item.option = request.POST['option']

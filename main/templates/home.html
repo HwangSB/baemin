@@ -14,91 +14,25 @@
 
   <div class="album py-5 bg-light">
     <div class="container">
-<!-- ************************************************************************ -->
       <div class="row">
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>가게이름</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">가게이름</text></svg>
-            <div class="card-body">
-              <p class="card-text">상세 정보</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'menu'%}" style="color: inherit;">메뉴보기</a></button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+
 <!-- ************************************************************************ -->
+        {% for item in items %}
+        {% if item.usertype == 'STORE' %}
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>가게이름</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">가게이름</text></svg>
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>{{ item.store }}</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">{{ item.store }}</text></svg>
             <div class="card-body">
-              <p class="card-text">상세 정보</p>
               <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">메뉴보기</button>
-                </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary"><a href="{% url 'menu' item.id %}" style="color: inherit;">메뉴보기</a></button>
+                  </div>
               </div>
             </div>
           </div>
         </div>
-<!-- ************************************************************************ -->
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>가게이름</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">가게이름</text></svg>
-            <div class="card-body">
-              <p class="card-text">상세정보</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">메뉴보기</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-<!-- ************************************************************************ -->
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>가게이름</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">가게이름</text></svg>
-            <div class="card-body">
-              <p class="card-text">상세정보</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">메뉴보기</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-<!-- ************************************************************************ -->
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>가게이름</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">가게이름</text></svg>
-            <div class="card-body">
-              <p class="card-text">상세정보</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">메뉴보기</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-<!-- ************************************************************************ -->
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>가게이름</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">가게이름</text></svg>
-            <div class="card-body">
-              <p class="card-text">상세정보</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">메뉴보기</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {% endif %}
+        {% endfor %}
 <!-- ************************************************************************ -->
 
           <hr class="mb-4">
