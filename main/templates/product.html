@@ -70,8 +70,11 @@
       </div>
 
       <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">더 둘러보기</button>
+        <button class="btn btn-primary btn-lg btn-block" type="submit"><a href="{% url 'home'%}" style="color:white">쇼핑 계속하기</a></button>
+      <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit"><a href="{% url 'payment'%}" style="color:white">결제하기</a></button>
     </div>
   </div>
 </div>
+<br>
 {% endblock %}
