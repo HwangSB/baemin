@@ -11,6 +11,9 @@ def menu(request): #menu.html
 def product(request): #product.html
     return render(request,'product.html')
 
+def payment(request): #product.html
+    return render(request,'payment.html')
+
 def update(request,item_id): #update.html
     update = get_object_or_404(Item,pk = item_id)
     return render(request,'update.html',{'update':update})

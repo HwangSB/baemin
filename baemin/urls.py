@@ -24,6 +24,7 @@ urlpatterns = [
     path('update.html/<int:item_id>',views.update,name='update1'),
     path('menu.html',views.menu,name='menu'),
     path('product.html',views.product,name='product'),
+    path('payment.html',views.payment,name='payment'),
 
 
     #여기 밑에는 CRUD 경로 입니다.
