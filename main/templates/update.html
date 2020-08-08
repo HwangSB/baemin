@@ -58,6 +58,8 @@
             </div>
         </div>
 
+        <hr class="mb-4">
+
         <div class="row">
             <div class="col-md mb-3">
                 <label for="name"><b>주문자</b></label>
@@ -68,87 +70,78 @@
             </div>
         </div>
 
-        <div class="mb-3">
-            <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-        </div>
-
         <div class="row">
-            <div class="col-md-5 mb-3">
-                <label for="country">Country</label>
-                <select class="custom-select d-block w-100" id="country" required>
-                    <option value="">Choose...</option>
-                    <option>United States</option>
-                </select>
+            <div class="col-md mb-3">
+                <label for="price"><b>가격</b></label>
+                <input type="text" class="form-control" id="price" placeholder="" value="" required>
                 <div class="invalid-feedback">
-                    Please select a valid country.
+                    금액을 입력해주세요.
                 </div>
-            </div>
-            <div class="col-md-4 mb-3">
-                <label for="state">State</label>
-                <select class="custom-select d-block w-100" id="state" required>
-                    <option value="">Choose...</option>
-                    <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                    Please provide a valid state.
-                </div>
-            </div>
-            <div class="col-md-3 mb-3">
-                <label for="zip">Zip</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required>
-                <div class="invalid-feedback">
-                    Zip code required.
-                </div>
-            </div>
-        </div>
-        <hr class="mb-4">
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="same-address">
-            <label class="custom-control-label" for="same-address">Shipping address is the same as my billing
-                address</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="save-info">
-            <label class="custom-control-label" for="save-info">Save this information for next time</label>
-        </div>
-        <hr class="mb-4">
-
-
-        <h5 class="mb-3"><b>결제방법</b></h5>
-        <div class="d-block my-3">
-            <div class="custom-control custom-radio">
-                <input id="baeminpay" name="paymentMethod" type="radio" class="custom-control-input" checked required>
-                <label class="custom-control-label" for="baeminpay">배민페이</label>
-            </div>
-            <div class="custom-control custom-radio">
-                <input id="kakaopay" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="kakaopay">카카오페이</label>
-            </div>
-            <div class="custom-control custom-radio">
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                <label class="custom-control-label" for="credit">신용카드</label>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                <label for="delivery"><b>배달비 포함 유무</b></label>
+                <select class="custom-select d-block w-100" id="delivery" required>
+                    <option value="">선택해주세요</option>
+                    <option>배달비 포함</option>
+                    <option>배달비 미포함</option>
+                </select>
                 <div class="invalid-feedback">
-                    Expiration date required
+                    배달비 포함 유무를 골라주세요.
                 </div>
             </div>
-            <div class="col-md-3 mb-3">
-                <label for="cc-cvv">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+            <div class="col-md mb-3">
+                <label for="deliveryfee"><b>배달비 입력</b><span class="text-muted"> (선택)</span></label>
+                <input type="text" class="form-control" id="deliveryfee" placeholder="" value="">
                 <div class="invalid-feedback">
-                    Security code required
+                    배달비를 입력해주세요.
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <label for="bank"><b>은행</b></label>
+                <select class="custom-select d-block w-100" id="bank" required>
+                    <option value="">선택해주세요</option>
+                    <option>카카오뱅크</option>
+                    <option>국민은행</option>
+                    <option>신한은행</option>
+                    <option>우리은행</option>
+                    <option>기업은행</option>
+                    <option>농협은행</option>
+                    <option>기타</option>
+                </select>
+                <div class="invalid-feedback">
+                    은행을 골라주세요.
+                </div>
+            </div>
+            <div class="col-md mb-3">
+                <label for="account"><b>계좌번호 입력</b></label>
+                <input type="text" class="form-control" id="account" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                    계좌번호를 입력해주세요.
+                </div>
+            </div>
+        </div>
+
+
         <hr class="mb-4">
-        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+        <div class="row">
+            <div class="col-md mb-3">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="kakaopay">
+                    <label class="custom-control-label" for="kakaopay">카카오페이 가능</label>
+                </div>
+        <hr class="mb-4">
+
+        <div class="row">
+        <div class="col-md mb-3">
+                <p><button type="button" class="btn btn-info btn-block" type="submit">주문 등록하기</button></p>
+                </div>
+                </div>
     </form>
 </div>
 </div>
