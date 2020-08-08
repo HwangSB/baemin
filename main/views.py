@@ -31,7 +31,7 @@ def create(request): #Create - 객체 생성
         item.store = request.POST['store']
         item.menu = request.POST['menu']
         item.option = request.POST['option']
-        item.option = request.POST['price']
+        item.price = request.POST['price']
 
         item.save()
         return redirect('home')
@@ -44,7 +44,7 @@ def update(request, item_id): #Update - 객체 수정
         item.store = request.POST['store']
         item.menu = request.POST['menu']
         item.option = request.POST['option']
-        item.option = request.POST['price']
+        item.price = request.POST['price']
 
         item.save()
         return redirect('home')
