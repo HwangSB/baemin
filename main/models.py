@@ -1,12 +1,18 @@
 from django.db import models
 
 # Create your models here.
-class Item(models.Model):
-    usertype=models.CharField(max_length = 50, default='USER')
-    store=models.CharField(max_length = 50, default='')
-    menu=models.TextField()
-    option=models.TextField(default='option')
-    price=models.IntegerField(default=0)
+class Store(models.Model):
+    name = models.CharField(max_length=50, default='')
+    menu = models.TextField()
+
+    def __str__(self):
+        return self.name + " >> " + self.menu
+
+class User(models.Model):
+    store = models.CharField(max_length = 50, default='')
+    menu = models.CharField(max_length = 50, default='')
+    option = models.TextField(default='option')
+    price = models.IntegerField()
 
     def __str__(self):
         return self.store + " >> " + self.menu

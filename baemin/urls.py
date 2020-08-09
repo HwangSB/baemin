@@ -20,13 +20,17 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('update.html/<int:item_id>',views.update,name='update1'),
-    path('menu/<int:item_id>',views.menu,name='menu'),
-    path('product/<int:item_id>',views.product,name='product'),
+    path('update.html/<int:store_id>',views.update,name='update1'),
+    path('menu/<int:store_id>', views.menu, name='menu'),
+    path('product/<int:store_id>/<int:menu_id>',views.product,name='product'),
     path('payment/',views.payment,name='payment'),
 
 
-    path('create/',views.create,name='create'),
-    path('update/<int:item_id>',views.update,name='update'),
-    path('delete/<int:item_id>',views.delete,name='delete'),
+    path('create_item/',views.create_item,name='create_item'),
+    path('update_item/<int:item_id>',views.update_item,name='update_item'),
+    path('delete_item/<int:item_id>',views.delete_item,name='delete_item'),
+
+    path('create_user/',views.create_user,name='create_user'),
+    path('update_user/<int:item_id>',views.update_user,name='update_user'),
+    path('delete_user/<int:item_id>',views.delete_user,name='delete_user'),
 ]

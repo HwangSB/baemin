@@ -1,61 +1,106 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Item
+from .models import Store, User
 
 # Create your views here.
 def home(request):
     if request.method == 'POST':
         return redirect('payment')
 
-    items = Item.objects.all()
-    return render(request, 'home.html',{'items':items})
+    context = {
+        'stores': Store.objects.all()
+    }
 
-def menu(request, item_id): #menu.html
-    store = get_object_or_404(Item, pk=item_id)
-    menus = menu.menu.split(',')
-    return render(request,'menu.html',{'store':store,'menus':menus})
-    #return render(request,'menu.html',{'menu':menu})
+    return render(request, 'home.html', context)
 
-def product(request, item_id): #product.html
-    product = get_object_or_404(Item, pk=item_id)
-    return render(request,'product.html', {'product':product})
+def menu(request, store_id): #menu.html
+    store = get_object_or_404(Store, pk=store_id)
+    menus = store.menu.split('\r\n')
+    menu_list = []
+    for menu in menus:
+        data = menu.split(':')
+        menu_list.append((data[0], data[1]))
+    return render(request, 'menu.html', {'store': store, 'menus': menu_list})
+
+def product(request, store_id, menu_id): #product.html
+    products = User.objects.all()
+    store = get_object_or_404(Store, pk = store_id)
+    product_object = get_object_or_404(Store, pk=store_id)
+    product = product_object.menu.split('\r\n')[menu_id - 1].split(':')[0]
+    product_price = product_object.menu.split('\r\n')[menu_id - 1].split(':')[1]
+    total = 0
+    for price in products:
+        total += price.price
+    return render(request,'product.html', {'store':store,'products':products,'product':product,'product_price':product_price,'total':total})
 
 def payment(request): #product.html
-    return render(request,'payment.html')
+    products = User.objects.all()
+    return render(request,'payment.html',{'products':products})
 
-def update(request,item_id): #update.html
-    update = get_object_or_404(Item,pk = item_id)
-    return render(request,'update.html',{'update':update})
+def update(request,store_id): #update.html
+    update = get_object_or_404(Store,pk = store_id)
+    return render(request,'update.html', {'update':update})
 
 #---------------------------------------------------------------------
-def create(request): #Create - 객체 생성 
+def create_item(request): #Create - 객체 생성 
     if request.method == 'POST':
-        item = Item()
-        item.usertype = request.POST['usertype']
-        item.store = request.POST['store']
-        item.menu = request.POST['menu']
-        item.option = request.POST['option']
-        item.price = request.POST['price']
+        store = Store()
+        store.usertype = request.POST['usertype']
+        store.store = request.POST['store']
+        store.menu = request.POST['menu']
+        store.option = request.POST['option']
+        store.price = request.POST['price']
 
-        item.save()
+        store.save()
         return redirect('home')
 
-def update(request, item_id): #Update - 객체 수정
-    item = get_object_or_404(Item, pk = item_id)
+def update_item(request, store_id): #Update - 객체 수정
+    store = get_object_or_404(Store, pk = store_id)
     if request.method == 'POST':
-        item = Item()
-        item.usertype = request.POST['usertype']
-        item.store = request.POST['store']
-        item.menu = request.POST['menu']
-        item.option = request.POST['option']
-        item.price = request.POST['price']
+        store = Store()
+        store.usertype = request.POST['usertype']
+        store.store = request.POST['store']
+        store.menu = request.POST['menu']
+        store.option = request.POST['option']
+        store.price = request.POST['price']
 
-        item.save()
+        store.save()
         return redirect('home')
     else:
-        return render(request,'update.html', {'items':item})
+        return render(request, 'update.html', {'store':store})
 
-def delete(request, item_id): #Delete - 객체 삭제
-    item = get_object_or_404(Item, pk = item_id)
-    item.delete()
+def delete_item(request, store_id): #Delete - 객체 삭제
+    store = get_object_or_404(Store, pk = store_id)
+    store.delete()
+
+    return redirect('home')
+
+def create_user(request): #Create - 객체 생성 
+    if request.method == 'POST':
+        user = User()
+        user.store = request.POST['store']
+        user.menu = request.POST['menu']
+        user.option = request.POST['option']
+        user.price = request.POST['price']
+
+        user.save()
+        return redirect('home')
+
+def update_user(request, user_id): #Update - 객체 수정
+    item = get_object_or_404(User, pk = user_id)
+    if request.method == 'POST':
+        user = User()
+        user.store = request.POST['store']
+        user.menu = request.POST['menu']
+        user.option = request.POST['option']
+        user.price = request.POST['price']
+
+        user.save()
+        return redirect('home')
+    else:
+        return render(request,'update_user', {'users':user})
+
+def delete_user(request, user_id): #Delete - 객체 삭제
+    user = get_object_or_404(User, pk = user_id)
+    user.delete()
 
     return redirect('home')
