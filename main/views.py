@@ -3,22 +3,38 @@ from .models import Item
 
 # Create your views here.
 def home(request):
-    item = Item.objects.all()
-    return render(request, 'home.html')
+    if request.method == 'POST':
+        return redirect('payment')
 
-def update(request,post_id): #update.html
-    update = get_object_or_404(Item,pk = post_id)
-    return render(request,'update.html',{update:'update'})
+    items = Item.objects.all()
+    return render(request, 'home.html',{'items':items})
+
+def menu(request, item_id): #menu.html
+    menus = Item.objects.all()
+    menu = get_object_or_404(Item, pk=item_id)
+    return render(request,'menu.html',{'menus':menus,'menu':menu})
+    #return render(request,'menu.html',{'menu':menu})
+
+def product(request, item_id): #product.html
+    product = get_object_or_404(Item, pk=item_id)
+    return render(request,'product.html', {'product':product})
+
+def payment(request): #product.html
+    return render(request,'payment.html')
+
+def update(request,item_id): #update.html
+    update = get_object_or_404(Item,pk = item_id)
+    return render(request,'update.html',{'update':update})
 
 #---------------------------------------------------------------------
 def create(request): #Create - 객체 생성 
     if request.method == 'POST':
         item = Item()
-        item.name = request.POST['name']
+        item.usertype = request.POST['usertype']
         item.store = request.POST['store']
         item.menu = request.POST['menu']
         item.option = request.POST['option']
-        item.option = request.POST['price']
+        item.price = request.POST['price']
 
         item.save()
         return redirect('home')
@@ -27,11 +43,11 @@ def update(request, item_id): #Update - 객체 수정
     item = get_object_or_404(Item, pk = item_id)
     if request.method == 'POST':
         item = Item()
-        item.name = request.POST['name']
+        item.usertype = request.POST['usertype']
         item.store = request.POST['store']
         item.menu = request.POST['menu']
         item.option = request.POST['option']
-        item.option = request.POST['price']
+        item.price = request.POST['price']
 
         item.save()
         return redirect('home')
