@@ -23,12 +23,18 @@ def menu(request, store_id): #menu.html
 
 def product(request, store_id, menu_id): #product.html
     products = User.objects.all()
-    product = get_object_or_404(Store, pk=store_id)
-    product = product.menu.split('\r\n')[menu_id - 1]
-    return render(request,'product.html', {'products':products,'product':product})
+    store = get_object_or_404(Store, pk = store_id)
+    product_object = get_object_or_404(Store, pk=store_id)
+    product = product_object.menu.split('\r\n')[menu_id - 1].split(':')[0]
+    product_price = product_object.menu.split('\r\n')[menu_id - 1].split(':')[1]
+    total = 0
+    for price in products:
+        total += price.price
+    return render(request,'product.html', {'store':store,'products':products,'product':product,'product_price':product_price,'total':total})
 
 def payment(request): #product.html
-    return render(request,'payment.html')
+    products = User.objects.all()
+    return render(request,'payment.html',{'products':products})
 
 def update(request,store_id): #update.html
     update = get_object_or_404(Store,pk = store_id)

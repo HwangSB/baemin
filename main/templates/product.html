@@ -11,10 +11,9 @@
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
         <span class="text-muted">주문내역</span>
-        <span class="badge badge-secondary badge-pill">3</span>
+        <span class="badge badge-secondary badge-pill">{{products|length}}</span>
       </h4>
       <ul class="list-group mb-3">
-        {% with total=0 %}
         {% for i  in products %}
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
@@ -23,7 +22,6 @@
             <a>삭제</a>
           </div>
           <span class="text-muted">{{i.price}}원</span>
-          {{ total|add:"i.price" }}
         </li>
         {% endfor %}
         
@@ -31,7 +29,6 @@
           <span>총액</span>
           <strong>{{total}}원</strong>
         </li>
-        {% endwith %}
       </ul>
     </div>
 
@@ -40,17 +37,17 @@
         {% csrf_token %}
         <div class="mb-3">
           <label for="text">메뉴이름</label>
-          <input type="text" class="form-control" name="menu" value="메뉴이름">
+          <input type="text" class="form-control" name="menu" value="{{ product }}">
         </div>
 
         <div class="mb-3">
           <label for="text">매장명</label>
-          <input type="text" class="form-control" name="store" value="매장명">
+          <input type="text" class="form-control" name="store" value="{{ store.name }}">
         </div>
 
         <div class="mb-3">
           <label for="text">가격</label>
-          <input type="number" class="form-control" name="price" value="6000">
+          <input type="text" class="form-control" name="price" value="{{ product_price }}">
         </div>
 
         <div class="mb-3">
