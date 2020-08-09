@@ -3,13 +3,18 @@
 
 {% block title %}집에 보내조 - 홈화면{% endblock %}
 
+{% block link %}
+{% static 'css/home.css' %}
+{% endblock %}
+
 {% block content %}
+
 <!--------------------------------- 페이지 상단 부분 ------------------------->
 <main role="main">
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>배달의민족</h1>
-      <p class="lead text-muted">지금까지 이런 맛은 없었다, 이것은 갈비인가 통닭인가</p>
+      <h1>족민의 달배</h1>
+      <p class="lead text-muted">집에 가고싶은 음식들</p>
     </div>
   </section>
 <!--------------------------------- 페이지 중간 부분 ------------------------->
@@ -21,6 +26,7 @@
         {% for store in stores %}
           <div class="col-md-4">
             <div class="card mb-4 shadow-sm">
+              <img src="{{store.image.url}}" alt="" style="width:100%;">
               <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
                 <title>{{ store.name }}</title>
                 <rect width="100%" height="100%" fill="#55595c"/>
