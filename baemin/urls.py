@@ -22,7 +22,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('update.html/<int:store_id>',views.update,name='update1'),
     path('menu/<int:store_id>', views.menu, name='menu'),
-    path('product/<int:store_id>',views.product,name='product'),
+    path('product/<int:store_id>/<int:menu_id>',views.product,name='product'),
     path('payment/',views.payment,name='payment'),
 
 
