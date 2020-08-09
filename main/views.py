@@ -11,7 +11,7 @@ def home(request):
 
 def menu(request, item_id): #menu.html
     store = get_object_or_404(Item, pk=item_id)
-    menus = menu.menu.split(',')
+    menus = store.menu.split(',')
     return render(request,'menu.html',{'store':store,'menus':menus})
     #return render(request,'menu.html',{'menu':menu})
 
