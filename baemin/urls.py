@@ -24,6 +24,7 @@ urlpatterns = [
     path('menu/<int:store_id>', views.menu, name='menu'),
     path('product/<int:store_id>/<int:menu_id>',views.product,name='product'),
     path('payment/',views.payment,name='payment'),
+    path('order/',views.order,name='order'),
 
 
     path('create_item/',views.create_item,name='create_item'),
@@ -31,6 +32,6 @@ urlpatterns = [
     path('delete_item/<int:item_id>',views.delete_item,name='delete_item'),
 
     path('create_user/',views.create_user,name='create_user'),
-    path('update_user/<int:item_id>',views.update_user,name='update_user'),
-    path('delete_user/<int:item_id>',views.delete_user,name='delete_user'),
+    path('update_user/<int:user_id>',views.update_user,name='update_user'),
+    path('delete_user/<int:user_id>',views.delete_user,name='delete_user'),
 ]

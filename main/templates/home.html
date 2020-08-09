@@ -8,7 +8,7 @@
 <main role="main">
   <section class="jumbotron text-center">
     <div class="container">
-      <h1>족민의달배</h1>
+      <h1>배달의민족</h1>
       <p class="lead text-muted">지금까지 이런 맛은 없었다, 이것은 갈비인가 통닭인가</p>
     </div>
   </section>
@@ -37,14 +37,14 @@
           </div>
         {% endfor %}
 <!-- ************************************************************************ -->
-
-        <hr class="mb-4">
-        <form class="container" action="payment/" method="POST">
-          {% csrf_token %}
+      <hr class="mb-5">
+        <form class="container" action="order/" method="POST">
+        {% csrf_token %}
           <button class="btn btn-primary btn-lg btn-block" type="submit">
-            결제하기
+          주문내역 보기
           </button>
-        </form>
+        </form>  
+      
       </div>
     </div>
   </div>

@@ -16,7 +16,7 @@
           <div>
             <h6 class="my-0">{{i.menu}}</h6>
             <small class="text-muted">{{i.store}}</small>
-            <a>삭제</a>
+            <a href="{% url 'delete_user' i.id %}" style="font-size: smaller;">삭제</a>
           </div>
           <span class="text-muted">{{i.price}}원</span>
         </li>
@@ -28,14 +28,6 @@
         </li>
       </ul>
 
-      <form class="card p-2">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Promo code">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
-          </div>
-        </div>
-      </form>
     </div>
     <div class="col-md-8 order-md-1">
       <form class="needs-validation" novalidate>

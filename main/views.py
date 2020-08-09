@@ -34,7 +34,17 @@ def product(request, store_id, menu_id): #product.html
 
 def payment(request): #product.html
     products = User.objects.all()
-    return render(request,'payment.html',{'products':products})
+    total = 0
+    for price in products:
+        total += price.price
+    return render(request,'payment.html',{'products':products,'total':total})
+
+def order(request): #product.html
+    products = User.objects.all()
+    total = 0
+    for price in products:
+        total += price.price
+    return render(request,'order.html',{'products':products,'total':total})
 
 def update(request,store_id): #update.html
     update = get_object_or_404(Store,pk = store_id)
@@ -83,7 +93,7 @@ def create_user(request): #Create - 객체 생성
         user.price = request.POST['price']
 
         user.save()
-        return redirect('home')
+        return redirect('order')
 
 def update_user(request, user_id): #Update - 객체 수정
     item = get_object_or_404(User, pk = user_id)
@@ -95,7 +105,7 @@ def update_user(request, user_id): #Update - 객체 수정
         user.price = request.POST['price']
 
         user.save()
-        return redirect('home')
+        return redirect('order')
     else:
         return render(request,'update_user', {'users':user})
 
@@ -103,4 +113,4 @@ def delete_user(request, user_id): #Delete - 객체 삭제
     user = get_object_or_404(User, pk = user_id)
     user.delete()
 
-    return redirect('home')
+    return redirect('order')

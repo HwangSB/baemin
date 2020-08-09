@@ -33,9 +33,13 @@
         </div>
         {% endfor %}
 <!-- ************************************************************************ -->
-        
-        <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit"><a href="{% url 'payment'%}" style="color:white">결제하기</a></button>
+        <hr class="mb-5">
+          <form class="container" action="order/" method="POST">
+            {% csrf_token %}
+              <button class="btn btn-primary btn-lg btn-block" type="submit">
+                주문내역 보기
+              </button>
+          </form>  
 
       </div>
     </div>
