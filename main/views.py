@@ -50,7 +50,7 @@ def update(request,store_id): #update.html
     update = get_object_or_404(Store,pk = store_id)
     return render(request,'update.html', {'update':update})
 
-#---------------------------------------------------------------------
+#---------------------------------------------------------------------python
 def create_item(request): #Create - 객체 생성 
     if request.method == 'POST':
         store = Store()

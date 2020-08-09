@@ -11,7 +11,6 @@ class Store(models.Model):
         return self.name + " >> " + self.menu
 
 class User(models.Model):
-    image = models.ImageField(upload_to= 'images/')
     store = models.CharField(max_length = 50, default='')
     menu = models.CharField(max_length = 50, default='')
     option = models.TextField(default='option')
