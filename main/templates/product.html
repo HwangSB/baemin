@@ -10,31 +10,21 @@
   <div class="row">
     <div class="col-md-4 order-md-2 mb-4">
       <h4 class="d-flex justify-content-between align-items-center mb-3">
-        <span class="text-muted">Your cart</span>
+        <span class="text-muted">주문내역</span>
         <span class="badge badge-secondary badge-pill">3</span>
       </h4>
       <ul class="list-group mb-3">
+        {% for i  in products %}
         <li class="list-group-item d-flex justify-content-between lh-condensed">
           <div>
-            <h6 class="my-0">Product name</h6>
-            <small class="text-muted">store name</small>
+            <h6 class="my-0">{{i.menu}}</h6>
+            <small class="text-muted">{{i.store}}</small>
+            <a>삭제</a>
           </div>
-          <span class="text-muted">$12</span>
+          <span class="text-muted">{{i.price}}원</span>
         </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Second product</h6>
-            <small class="text-muted">store name</small>
-          </div>
-          <span class="text-muted">$8</span>
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Third item</h6>
-            <small class="text-muted">store name</small>
-          </div>
-          <span class="text-muted">$5</span>
-        </li>
+        {% endfor %}
+        
         <li class="list-group-item d-flex justify-content-between">
           <span>Total (USD)</span>
           <strong>$25</strong>
@@ -43,30 +33,30 @@
     </div>
 
     <div class="col-md-8 order-md-1">
-      <form action="{% url 'create' %}" method="POST" enctype="multipart/form-data">
+      <form action="{% url 'create_user' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="mb-3">
           <label for="text">메뉴이름</label>
-          <input type="text" class="form-control" name="menu" value="{{ product.menu }}">
+          <input type="text" class="form-control" name="menu" value="메뉴이름">
         </div>
 
         <div class="mb-3">
           <label for="text">매장명</label>
-          <input type="text" class="form-control" name="store" value="{{ product.store }}">
+          <input type="text" class="form-control" name="store" value="매장명">
         </div>
 
         <div class="mb-3">
           <label for="text">가격</label>
-          <input type="number" class="form-control" name="price" value="{{ product.price }}">
+          <input type="number" class="form-control" name="price" value="6000">
         </div>
 
         <div class="mb-3">
           <label for="text">옵션</label>
-          <input type="text" class="form-control" name="price" placeholder="추가하실 옵션을 입력하세요">
+          <input type="text" class="form-control" name="option" placeholder="추가하실 옵션을 입력하세요">
         </div>
 
         <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit">쇼핑 계속하기</button>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">장바구니에 담기</button>
         <hr class="mb-4">
           <button class="btn btn-primary btn-lg btn-block" type="submit">결제하기</button>
       </form>
