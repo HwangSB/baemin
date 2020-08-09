@@ -23,7 +23,7 @@ def menu(request, store_id): #menu.html
 
 def product(request, store_id): #product.html
     products = User.objects.all()
-    product = get_object_or_404(Item, pk=item_id)
+    product = get_object_or_404(Store, pk=store_id)
     return render(request,'product.html', {'products':products,'product':product})
 
 def payment(request): #product.html
