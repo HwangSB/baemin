@@ -6,7 +6,6 @@ class Item(models.Model):
     store=models.CharField(max_length = 50, default='')
     menu=models.TextField()
     option=models.TextField(default='option')
-    price=models.IntegerField(default=0)
 
     def __str__(self):
         return self.store + " >> " + self.menu

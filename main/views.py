@@ -12,6 +12,7 @@ def home(request):
 def menu(request, item_id): #menu.html
     store = get_object_or_404(Item, pk=item_id)
     menus = menu.menu.split(',')
+    # 불싸이버거:5000,싸이버거:6000
     return render(request,'menu.html',{'store':store,'menus':menus})
     #return render(request,'menu.html',{'menu':menu})
 
