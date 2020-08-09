@@ -21,9 +21,10 @@ def menu(request, store_id): #menu.html
         menu_list.append((data[0], data[1]))
     return render(request, 'menu.html', {'store': store, 'menus': menu_list})
 
-def product(request, store_id): #product.html
+def product(request, store_id, menu_id): #product.html
     products = User.objects.all()
     product = get_object_or_404(Store, pk=store_id)
+    product = product.menu.split('\r\n')[menu_id - 1]
     return render(request,'product.html', {'products':products,'product':product})
 
 def payment(request): #product.html
