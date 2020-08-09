@@ -1,7 +1,9 @@
 from django.db import models
+from PIL import Image
 
 # Create your models here.
 class Store(models.Model):
+    image = models.ImageField(upload_to='store')
     name = models.CharField(max_length=50, default='')
     menu = models.TextField()
 
@@ -9,6 +11,7 @@ class Store(models.Model):
         return self.name + " >> " + self.menu
 
 class User(models.Model):
+    image = models.ImageField(upload_to= 'images/')
     store = models.CharField(max_length = 50, default='')
     menu = models.CharField(max_length = 50, default='')
     option = models.TextField(default='option')
