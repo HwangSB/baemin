@@ -10,9 +10,9 @@ def home(request):
     return render(request, 'home.html',{'items':items})
 
 def menu(request, item_id): #menu.html
-    menus = Item.objects.all()
-    menu = get_object_or_404(Item, pk=item_id)
-    return render(request,'menu.html',{'menus':menus,'menu':menu})
+    store = get_object_or_404(Item, pk=item_id)
+    menus = menu.menu.split(',')
+    return render(request,'menu.html',{'store':store,'menus':menus})
     #return render(request,'menu.html',{'menu':menu})
 
 def product(request, item_id): #product.html
