@@ -20,9 +20,9 @@ from main import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
-    path('update.html/<int:item_id>',views.update,name='update1'),
-    path('menu/<int:item_id>',views.menu,name='menu'),
-    path('product/<int:item_id>',views.product,name='product'),
+    path('update.html/<int:store_id>',views.update,name='update1'),
+    path('menu/<int:store_id>', views.menu, name='menu'),
+    path('product/<int:store_id>',views.product,name='product'),
     path('payment/',views.payment,name='payment'),
 
 

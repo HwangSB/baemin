@@ -1,61 +1,67 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from .models import Item
+from .models import Store
 
 # Create your views here.
 def home(request):
     if request.method == 'POST':
         return redirect('payment')
 
-    items = Item.objects.all()
-    return render(request, 'home.html',{'items':items})
+    context = {
+        'stores': Store.objects.all()
+    }
 
-def menu(request, item_id): #menu.html
-    store = get_object_or_404(Item, pk=item_id)
-    menus = store.menu.split(',')
-    return render(request,'menu.html',{'store':store,'menus':menus})
-    #return render(request,'menu.html',{'menu':menu})
+    return render(request, 'home.html', context)
 
-def product(request, item_id): #product.html
-    product = get_object_or_404(Item, pk=item_id)
+def menu(request, store_id): #menu.html
+    store = get_object_or_404(Store, pk=store_id)
+    menus = store.menu.split('\r\n')
+    menu_list = []
+    for menu in menus:
+        data = menu.split(':')
+        menu_list.append((data[0], data[1]))
+    return render(request, 'menu.html', {'store': store, 'menus': menu_list})
+
+def product(request, store_id): #product.html
+    product = get_object_or_404(Store, pk=store_id)
     return render(request,'product.html', {'product':product})
 
 def payment(request): #product.html
     return render(request,'payment.html')
 
-def update(request,item_id): #update.html
-    update = get_object_or_404(Item,pk = item_id)
-    return render(request,'update.html',{'update':update})
+def update(request,store_id): #update.html
+    update = get_object_or_404(Store,pk = store_id)
+    return render(request,'update.html', {'update':update})
 
 #---------------------------------------------------------------------
 def create(request): #Create - 객체 생성 
     if request.method == 'POST':
-        item = Item()
-        item.usertype = request.POST['usertype']
-        item.store = request.POST['store']
-        item.menu = request.POST['menu']
-        item.option = request.POST['option']
-        item.price = request.POST['price']
+        store = Store()
+        store.usertype = request.POST['usertype']
+        store.store = request.POST['store']
+        store.menu = request.POST['menu']
+        store.option = request.POST['option']
+        store.price = request.POST['price']
 
-        item.save()
+        store.save()
         return redirect('home')
 
-def update(request, item_id): #Update - 객체 수정
-    item = get_object_or_404(Item, pk = item_id)
+def update(request, store_id): #Update - 객체 수정
+    store = get_object_or_404(Store, pk = store_id)
     if request.method == 'POST':
-        item = Item()
-        item.usertype = request.POST['usertype']
-        item.store = request.POST['store']
-        item.menu = request.POST['menu']
-        item.option = request.POST['option']
-        item.price = request.POST['price']
+        store = Store()
+        store.usertype = request.POST['usertype']
+        store.store = request.POST['store']
+        store.menu = request.POST['menu']
+        store.option = request.POST['option']
+        store.price = request.POST['price']
 
-        item.save()
+        store.save()
         return redirect('home')
     else:
-        return render(request,'update.html', {'items':item})
+        return render(request, 'update.html', {'store':store})
 
-def delete(request, item_id): #Delete - 객체 삭제
-    item = get_object_or_404(Item, pk = item_id)
-    item.delete()
+def delete(request, store_id): #Delete - 객체 삭제
+    store = get_object_or_404(Store, pk = store_id)
+    store.delete()
 
     return redirect('home')
