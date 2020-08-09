@@ -3,6 +3,9 @@ from .models import Item
 
 # Create your views here.
 def home(request):
+    if request.method == 'POST':
+        return redirect('payment')
+
     items = Item.objects.all()
     return render(request, 'home.html',{'items':items})
 
