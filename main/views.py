@@ -79,7 +79,7 @@ def create_user(request): #Create - 객체 생성
         return redirect('home')
 
 def update_user(request, user_id): #Update - 객체 수정
-    item = get_object_or_404(Item, pk = user_id)
+    item = get_object_or_404(User, pk = user_id)
     if request.method == 'POST':
         user = User()
         user.store = request.POST['store']
@@ -93,7 +93,7 @@ def update_user(request, user_id): #Update - 객체 수정
         return render(request,'update_user', {'users':user})
 
 def delete_user(request, user_id): #Delete - 객체 삭제
-    user = get_object_or_404(Item, pk = user_id)
+    user = get_object_or_404(User, pk = user_id)
     user.delete()
 
     return redirect('home')
